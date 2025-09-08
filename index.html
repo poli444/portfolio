@@ -1,52 +1,65 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Моё портфолио</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Портфолио — адаптивный лендинг</title>
   <link rel="stylesheet" href="style.css">
+
+  <!-- Рекомендуется: заранее подсказать браузеру подгрузить плашки -->
+  <link rel="preload" href="images/top-desktop.webp" as="image" media="(min-width: 768px)" type="image/webp">
+  <link rel="preload" href="images/top-mobile.webp"  as="image" media="(max-width: 767px)" type="image/webp">
 </head>
 <body>
 
-  <!-- Десктопные блоки -->
-  <div class="block"><img class="desktop" src="images/desktop-1.png" alt="Блок 1" loading="lazy"></div>
-  <div class="block"><img class="desktop" src="images/desktop-2.png" alt="Блок 2" loading="lazy"></div>
-  <div class="block"><img class="desktop" src="images/desktop-3.png" alt="Блок 3" loading="lazy"></div>
-  <div class="block"><img class="desktop" src="images/desktop-4.png" alt="Блок 4" loading="lazy"></div>
-  <div class="block"><img class="desktop" src="images/desktop-5.png" alt="Блок 5" loading="lazy"></div>
-  <div class="block"><img class="desktop" src="images/desktop-6.png" alt="Блок 6" loading="lazy"></div>
-  <div class="block"><img class="desktop" src="images/desktop-7.png" alt="Блок 7" loading="lazy"></div>
-  <div class="block"><img class="desktop" src="images/desktop-8.png" alt="Блок 8" loading="lazy"></div>
-  <div class="block"><img class="desktop" src="images/desktop-9.png" alt="Блок 9" loading="lazy"></div>
-  <div class="block"><img class="desktop" src="images/desktop-10.png" alt="Блок 10" loading="lazy"></div>
-  <div class="block"><img class="desktop" src="images/desktop-11.png" alt="Блок 11" loading="lazy"></div>
-  <div class="block"><img class="desktop" src="images/desktop-12.png" alt="Блок 12" loading="lazy"></div>
-  <div class="block"><img class="desktop" src="images/desktop-13.png" alt="Блок 13" loading="lazy"></div>
-  <div class="block"><img class="desktop" src="images/desktop-14.png" alt="Блок 14" loading="lazy"></div>
-  <div class="block"><img class="desktop" src="images/desktop-15.png" alt="Блок 15" loading="lazy"></div>
-  <div class="block"><img class="desktop" src="images/desktop-16.png" alt="Блок 16" loading="lazy"></div>
-  <div class="block"><img class="desktop" src="images/desktop-17.png" alt="Блок 17" loading="lazy"></div>
-  <div class="block"><img class="desktop" src="images/desktop-18.png" alt="Блок 18" loading="lazy"></div>
+  <!-- НЕПОДВИЖНАЯ ПЛАШКА (фиксируется вверху). 
+       Если хочешь — легко переключить на bottom (в CSS есть подсказка). -->
+  <header class="header" role="banner" aria-label="Контакты">
+    <!-- mobile source first (picked when viewport <=767px), then desktop -->
+    <picture class="header-picture mobile">
+      <source media="(max-width: 767px)" srcset="images/top-mobile.webp" type="image/webp">
+      <source media="(max-width: 767px)" srcset="images/top-mobile.png">
+      <img src="images/top-mobile.webp" alt="Контакты — мобильная" loading="eager">
+    </picture>
 
-  <!-- Мобильные блоки -->
-  <div class="block"><img class="mobile" src="images/mobile-1.png" alt="Блок 1" loading="lazy"></div>
-  <div class="block"><img class="mobile" src="images/mobile-2.png" alt="Блок 2" loading="lazy"></div>
-  <div class="block"><img class="mobile" src="images/mobile-3.png" alt="Блок 3" loading="lazy"></div>
-  <div class="block"><img class="mobile" src="images/mobile-4.png" alt="Блок 4" loading="lazy"></div>
-  <div class="block"><img class="mobile" src="images/mobile-5.png" alt="Блок 5" loading="lazy"></div>
-  <div class="block"><img class="mobile" src="images/mobile-6.png" alt="Блок 6" loading="lazy"></div>
-  <div class="block"><img class="mobile" src="images/mobile-7.png" alt="Блок 7" loading="lazy"></div>
-  <div class="block"><img class="mobile" src="images/mobile-8.png" alt="Блок 8" loading="lazy"></div>
-  <div class="block"><img class="mobile" src="images/mobile-9.png" alt="Блок 9" loading="lazy"></div>
-  <div class="block"><img class="mobile" src="images/mobile-10.png" alt="Блок 10" loading="lazy"></div>
-  <div class="block"><img class="mobile" src="images/mobile-11.png" alt="Блок 11" loading="lazy"></div>
-  <div class="block"><img class="mobile" src="images/mobile-12.png" alt="Блок 12" loading="lazy"></div>
-  <div class="block"><img class="mobile" src="images/mobile-13.png" alt="Блок 13" loading="lazy"></div>
-  <div class="block"><img class="mobile" src="images/mobile-14.png" alt="Блок 14" loading="lazy"></div>
-  <div class="block"><img class="mobile" src="images/mobile-15.png" alt="Блок 15" loading="lazy"></div>
-  <div class="block"><img class="mobile" src="images/mobile-16.png" alt="Блок 16" loading="lazy"></div>
-  <div class="block"><img class="mobile" src="images/mobile-17.png" alt="Блок 17" loading="lazy"></div>
-  <div class="block"><img class="mobile" src="images/mobile-18.png" alt="Блок 18" loading="lazy"></div>
+    <picture class="header-picture desktop">
+      <source media="(min-width: 768px)" srcset="images/top-desktop.webp" type="image/webp">
+      <source media="(min-width: 768px)" srcset="images/top-desktop.png">
+      <img src="images/top-desktop.webp" alt="Контакты — десктоп" loading="eager">
+    </picture>
+  </header>
 
+  <!-- Контейнер для лендинга -->
+  <main id="main" class="main-content" role="main" aria-label="Лента портфолио">
+    <!-- JS динамически создаст 18 блоков (каждый блок сам выберет desktop или mobile картинку по media) -->
+    <div id="blocks-container" class="blocks-container"></div>
+  </main>
+
+  <script>
+    // Генерация блоков после загрузки DOM — безопасно для GitHub Pages
+    document.addEventListener('DOMContentLoaded', () => {
+      const container = document.getElementById('blocks-container');
+      const total = 18; // 1..18
+
+      for (let i = 1; i <= total; i++) {
+        const block = document.createElement('section');
+        block.className = 'block';
+        block.setAttribute('aria-label', `Блок ${i}`);
+
+        // Важно: mobile sources идут первыми (media (max-width:767px)), затем desktop (min-width:768px)
+        block.innerHTML = `
+          <picture>
+            <source media="(max-width: 767px)" srcset="images/mobile-${i}.webp" type="image/webp">
+            <source media="(max-width: 767px)" srcset="images/mobile-${i}.png">
+            <source media="(min-width: 768px)" srcset="images/desktop-${i}.webp" type="image/webp">
+            <source media="(min-width: 768px)" srcset="images/desktop-${i}.png">
+            <!-- fallback: desktop webp (will be used if no source matched for some reason) -->
+            <img src="images/desktop-${i}.webp" alt="Блок ${i}" loading="lazy">
+          </picture>
+        `;
+        container.appendChild(block);
+      }
+    });
+  </script>
 </body>
 </html>
