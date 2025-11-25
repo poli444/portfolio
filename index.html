@@ -1,65 +1,205 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Портфолио — адаптивный лендинг</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Портфолио Полины</title>
   <link rel="stylesheet" href="style.css">
-
-  <!-- Рекомендуется: заранее подсказать браузеру подгрузить плашки -->
-  <link rel="preload" href="images/top-desktop.webp" as="image" media="(min-width: 768px)" type="image/webp">
-  <link rel="preload" href="images/top-mobile.webp"  as="image" media="(max-width: 767px)" type="image/webp">
 </head>
+
 <body>
 
-  <!-- НЕПОДВИЖНАЯ ПЛАШКА (фиксируется вверху). 
-       Если хочешь — легко переключить на bottom (в CSS есть подсказка). -->
-  <header class="header" role="banner" aria-label="Контакты">
-    <!-- mobile source first (picked when viewport <=767px), then desktop -->
-    <picture class="header-picture mobile">
-      <source media="(max-width: 767px)" srcset="images/top-mobile.webp" type="image/webp">
-      <source media="(max-width: 767px)" srcset="images/top-mobile.png">
-      <img src="images/top-mobile.webp" alt="Контакты — мобильная" loading="eager">
+  <!-- Плавающая верхняя плашка -->
+  <div class="topbar">
+    <picture>
+      <source srcset="images/top-desktop.webp" media="(min-width: 769px)" type="image/webp">
+      <source srcset="images/top-desktop.png" media="(min-width: 769px)">
+      <source srcset="images/top-mobile.webp" media="(max-width: 768px)" type="image/webp">
+      <source srcset="images/top-mobile.png" media="(max-width: 768px)">
+      <img src="images/top-desktop.png" alt="Верхняя плашка">
     </picture>
+  </div>
 
-    <picture class="header-picture desktop">
-      <source media="(min-width: 768px)" srcset="images/top-desktop.webp" type="image/webp">
-      <source media="(min-width: 768px)" srcset="images/top-desktop.png">
-      <img src="images/top-desktop.webp" alt="Контакты — десктоп" loading="eager">
-    </picture>
-  </header>
+  <!-- ВСЕ ДЕСKTOP-БЛОКИ -->
+  <div class="blocks desktop-version">
+    <!-- 14 экранов -->
+    <!-- Я вставляю автоматический генератор через цикл -->
+    <!-- Но тебе он выдаётся уже "развернутым" — готовым HTML -->
+    
+    <!-- Десктопные фреймы -->
+    <div class="block">
+      <picture>
+        <source srcset="images/desktop-1.webp" type="image/webp">
+        <img src="images/desktop-1.png" alt="Desktop 1">
+      </picture>
+    </div>
+    <div class="block">
+      <picture>
+        <source srcset="images/desktop-2.webp" type="image/webp">
+        <img src="images/desktop-2.png" alt="Desktop 2">
+      </picture>
+    </div>
+    <div class="block">
+      <picture>
+        <source srcset="images/desktop-3.webp" type="image/webp">
+        <img src="images/desktop-3.png" alt="Desktop 3">
+      </picture>
+    </div>
+    <div class="block">
+      <picture>
+        <source srcset="images/desktop-4.webp" type="image/webp">
+        <img src="images/desktop-4.png" alt="Desktop 4">
+      </picture>
+    </div>
+    <div class="block">
+      <picture>
+        <source srcset="images/desktop-5.webp" type="image/webp">
+        <img src="images/desktop-5.png" alt="Desktop 5">
+      </picture>
+    </div>
+    <div class="block">
+      <picture>
+        <source srcset="images/desktop-6.webp" type="image/webp">
+        <img src="images/desktop-6.png" alt="Desktop 6">
+      </picture>
+    </div>
+    <div class="block">
+      <picture>
+        <source srcset="images/desktop-7.webp" type="image/webp">
+        <img src="images/desktop-7.png" alt="Desktop 7">
+      </picture>
+    </div>
+    <div class="block">
+      <picture>
+        <source srcset="images/desktop-8.webp" type="image/webp">
+        <img src="images/desktop-8.png" alt="Desktop 8">
+      </picture>
+    </div>
+    <div class="block">
+      <picture>
+        <source srcset="images/desktop-9.webp" type="image/webp">
+        <img src="images/desktop-9.png" alt="Desktop 9">
+      </picture>
+    </div>
+    <div class="block">
+      <picture>
+        <source srcset="images/desktop-10.webp" type="image/webp">
+        <img src="images/desktop-10.png" alt="Desktop 10">
+      </picture>
+    </div>
+    <div class="block">
+      <picture>
+        <source srcset="images/desktop-11.webp" type="image/webp">
+        <img src="images/desktop-11.png" alt="Desktop 11">
+      </picture>
+    </div>
+    <div class="block">
+      <picture>
+        <source srcset="images/desktop-12.webp" type="image/webp">
+        <img src="images/desktop-12.png" alt="Desktop 12">
+      </picture>
+    </div>
+    <div class="block">
+      <picture>
+        <source srcset="images/desktop-13.webp" type="image/webp">
+        <img src="images/desktop-13.png" alt="Desktop 13">
+      </picture>
+    </div>
+    <div class="block">
+      <picture>
+        <source srcset="images/desktop-14.webp" type="image/webp">
+        <img src="images/desktop-14.png" alt="Desktop 14">
+      </picture>
+    </div>
+  </div>
 
-  <!-- Контейнер для лендинга -->
-  <main id="main" class="main-content" role="main" aria-label="Лента портфолио">
-    <!-- JS динамически создаст 18 блоков (каждый блок сам выберет desktop или mobile картинку по media) -->
-    <div id="blocks-container" class="blocks-container"></div>
-  </main>
+  <!-- ВСЕ МОБИЛЬНЫЕ БЛОКИ -->
+  <div class="blocks mobile-version">
+    <div class="block">
+      <picture>
+        <source srcset="images/mobile-1.webp" type="image/webp">
+        <img src="images/mobile-1.png" alt="Mobile 1">
+      </picture>
+    </div>
+    <div class="block">
+      <picture>
+        <source srcset="images/mobile-2.webp" type="image/webp">
+        <img src="images/mobile-2.png" alt="Mobile 2">
+      </picture>
+    </div>
+    <div class="block">
+      <picture>
+        <source srcset="images/mobile-3.webp" type="image/webp">
+        <img src="images/mobile-3.png" alt="Mobile 3">
+      </picture>
+    </div>
+    <div class="block">
+      <picture>
+        <source srcset="images/mobile-4.webp" type="image/webp">
+        <img src="images/mobile-4.png" alt="Mobile 4">
+      </picture>
+    </div>
+    <div class="block">
+      <picture>
+        <source srcset="images/mobile-5.webp" type="image/webp">
+        <img src="images/mobile-5.png" alt="Mobile 5">
+      </picture>
+    </div>
+    <div class="block">
+      <picture>
+        <source srcset="images/mobile-6.webp" type="image/webp">
+        <img src="images/mobile-6.png" alt="Mobile 6">
+      </picture>
+    </div>
+    <div class="block">
+      <picture>
+        <source srcset="images/mobile-7.webp" type="image/webp">
+        <img src="images/mobile-7.png" alt="Mobile 7">
+      </picture>
+    </div>
+    <div class="block">
+      <picture>
+        <source srcset="images/mobile-8.webp" type="image/webp">
+        <img src="images/mobile-8.png" alt="Mobile 8">
+      </picture>
+    </div>
+    <div class="block">
+      <picture>
+        <source srcset="images/mobile-9.webp" type="image/webp">
+        <img src="images/mobile-9.png" alt="Mobile 9">
+      </picture>
+    </div>
+    <div class="block">
+      <picture>
+        <source srcset="images/mobile-10.webp" type="image/webp">
+        <img src="images/mobile-10.png" alt="Mobile 10">
+      </picture>
+    </div>
+    <div class="block">
+      <picture>
+        <source srcset="images/mobile-11.webp" type="image/webp">
+        <img src="images/mobile-11.png" alt="Mobile 11">
+      </picture>
+    </div>
+    <div class="block">
+      <picture>
+        <source srcset="images/mobile-12.webp" type="image/webp">
+        <img src="images/mobile-12.png" alt="Mobile 12">
+      </picture>
+    </div>
+    <div class="block">
+      <picture>
+        <source srcset="images/mobile-13.webp" type="image/webp">
+        <img src="images/mobile-13.png" alt="Mobile 13">
+      </picture>
+    </div>
+    <div class="block">
+      <picture>
+        <source srcset="images/mobile-14.webp" type="image/webp">
+        <img src="images/mobile-14.png" alt="Mobile 14">
+      </picture>
+    </div>
+  </div>
 
-  <script>
-    // Генерация блоков после загрузки DOM — безопасно для GitHub Pages
-    document.addEventListener('DOMContentLoaded', () => {
-      const container = document.getElementById('blocks-container');
-      const total = 18; // 1..18
-
-      for (let i = 1; i <= total; i++) {
-        const block = document.createElement('section');
-        block.className = 'block';
-        block.setAttribute('aria-label', `Блок ${i}`);
-
-        // Важно: mobile sources идут первыми (media (max-width:767px)), затем desktop (min-width:768px)
-        block.innerHTML = `
-          <picture>
-            <source media="(max-width: 767px)" srcset="images/mobile-${i}.webp" type="image/webp">
-            <source media="(max-width: 767px)" srcset="images/mobile-${i}.png">
-            <source media="(min-width: 768px)" srcset="images/desktop-${i}.webp" type="image/webp">
-            <source media="(min-width: 768px)" srcset="images/desktop-${i}.png">
-            <!-- fallback: desktop webp (will be used if no source matched for some reason) -->
-            <img src="images/desktop-${i}.webp" alt="Блок ${i}" loading="lazy">
-          </picture>
-        `;
-        container.appendChild(block);
-      }
-    });
-  </script>
 </body>
 </html>

@@ -1,105 +1,58 @@
-/* --- Базовые сбросы --- */
-*,
-*::before,
-*::after { box-sizing: border-box; }
-
-html, body {
-  height: 100%;
+body {
   margin: 0;
   padding: 0;
-}
-
-body {
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
   background: #fff;
-  color: #111;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: sans-serif;
 }
 
-/* --- Параметры: подгони если нужно --- */
-:root {
-  --max-width: 1440px;
-  --gap: 20px;
-  --header-h-desktop: 80px; /* подгони под реальную высоту top-desktop.webp */
-  --header-h-mobile: 60px;  /* подгони под реальную высоту top-mobile.webp */
-}
-
-/* --- Фиксированная плашка (по умолчанию сверху) --- */
-.header {
+/* Плавающая верхняя плашка */
+.topbar {
   position: fixed;
   top: 0;
-  left: 50%;
-  transform: translateX(-50%); /* центрирование на больших экранах */
+  left: 0;
   width: 100%;
-  max-width: var(--max-width);
   z-index: 9999;
-  pointer-events: auto;
 }
 
-/* Скрываем/показываем соответствующие <picture> через медиазапросы */
-.header-picture { display: none; width: 100%; }
-.header-picture img { display: block; width: 100%; height: auto; }
-
-/* desktop picture visible on >=768 */
-@media (min-width: 768px) {
-  .header-picture.desktop { display: block; }
-}
-
-/* mobile picture visible on <768 */
-@media (max-width: 767px) {
-  .header-picture.mobile { display: block; }
-}
-
-/* --- Отступ, чтобы контент не скрывался под плашкой --- */
-body::before {
-  content: "";
-  display: block;
-  width: 100%;
-  height: var(--header-h-desktop);
-}
-
-@media (max-width: 767px) {
-  body::before { height: var(--header-h-mobile); }
-}
-
-/* --- Контент (лента) --- */
-.main-content {
-  width: 100%;
-  max-width: var(--max-width);
-  display: block;
-}
-
-/* Контейнер блоков */
-.blocks-container {
-  width: 100%;
-  padding: var(--gap) 0;
-}
-
-/* Один блок (картина) */
-.block {
-  width: 100%;
-  max-width: var(--max-width);
-  margin: 0 auto var(--gap) auto;
-}
-
-/* <picture> и img внутри блока */
-.block picture,
-.block img {
-  display: block;
+.topbar img {
   width: 100%;
   height: auto;
-  user-select: none;
+  display: block;
 }
 
-/* --- Пример: если хочешь, чтобы плашка была внизу экрана, а не сверху,
-   просто замените .header { top:0 } на .header { bottom: 0; top: auto; } и
-   скорректируй body::before (или убери его). */
+/* Контент отступает от плашки */
+.blocks {
+  margin-top: 120px; /* можно увеличить если плашка высокая */
+}
 
-/* --- Немного адаптивных косметических правок --- */
-@media (min-width: 1200px) {
-  .blocks-container { padding-left: 20px; padding-right: 20px; }
+/* Блоки */
+.block img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ДЕСKTOP */
+.desktop-version {
+  display: block;
+}
+
+.mobile-version {
+  display: none;
+}
+
+/* МОБИЛЬНАЯ ВЕРСИЯ */
+@media (max-width: 768px) {
+
+  .desktop-version {
+    display: none;
+  }
+
+  .mobile-version {
+    display: block;
+  }
+
+  .topbar {
+    height: auto;
+  }
 }
